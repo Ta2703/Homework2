@@ -1,26 +1,56 @@
-let name = prompt('Ваше имя?', 'abc');
-let surname = prompt('Ваша фамилия?', 'abc');
-let  fathername = prompt('Ваше отчество?', 'abc');
-let age = prompt ('Сколько тебе лет?', '123');
-let isMen = confirm('Ваш пол - мужской?', );
-let gender = isMen ? 'мужской' : 'женский';
-let grandGender;
-if (age <= 65 && gender) {
-grandGender = 'Нет!';
-} else if (age <= 55 && !gender) {
-    grandGender = 'Нет!';
-} else {
-    grandGender = 'Да!';
-}
+const validation = (fieldName) => {
+    let value; 
+  
+    if (fieldName === "age") {
+        value = +prompt(`Enter your ${fieldName}`);
 
-alert(`ФИО: ${name} ${surname} ${fathername}
-Ваш возраст в годах: ${age}
-Ваш возраст в днях: ${age *365}
-Через 5 лет вам будет: ${+age + 5}
-Ваш пол: ${gender}
-Вы на пенсии: ${grandGender}`);
+  while (!value || !Number.isInteger(value)) {
+      value = +prompt(`Enter your ${fieldName} again`);
+    }
+}else {
+    value = prompt(`Enter your ${fieldName}`);
+
+    while(!value) {
+        value = prompt(`Enter your ${fieldName} again`);     
+    }
+}
+    return value;
+  };
+  
+  const getGender = () => {
+    return confirm("Are you man?") ? "man" : "woman";
+  };
+  
+  const getPension = (gender, age) => {
+    if ((gender === "man" && age > 64) || (gender === "woman" && age > 54)) {
+      return "yes";
+    } else {
+      return "no";
+    }
+  };
+  
+  const showInfo = (username, surname, patronymic, age, gender, pension) => {
+    alert(`ФИО: ${username} ${surname} ${patronymic}
+    Ваш возрас в годах: ${age}
+    Ваш возрас в днях: ${age * 365}
+    Через 5 лет Вам будет: ${age + 5}
+    Ваш пол: ${gender}
+    Вы на пенсии: ${pension}`);
+  };
+  
+  const init = () => {
+    const username = validation("name");
+    const surname = validation("surname");
+    const patronymic = validation("patronymic");
+    const age = validation("age");
+    const gender = getGender();
+    const pension = getPension(gender, age);
+  
+    showInfo(username, surname, patronymic, age, gender, pension);
+  };
+  
+  init();
 
 let line = prompt('Введите предложение для подсчета гласных букв', 'абв/abc');
 let vowels = line.match(/[аоэиуыеёюяaeiouy]/g).length; 
 alert (vowels);
-
