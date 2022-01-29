@@ -1,0 +1,21 @@
+form{
+    width: 30;
+    padding: 1rem;
+    border: 4px solid purple;
+}
+
+#todo {
+    padding: 1rem;
+    border: 4px solid greenyellow ;
+}
+
+.card{
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border: 2px solid;
+    cursor: pointer;
+    text-decoration: 0.3s;
+}
+.card:hover {
+    background-color: hotpink;
+}
