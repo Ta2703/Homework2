@@ -16,6 +16,31 @@ form{
     cursor: pointer;
     text-decoration: 0.3s;
 }
+.card_done {
+    background-color: red;
+}
 .card:hover {
     background-color: hotpink;
 }
+#btnClearAll {
+    float: right;
+}
+#modal {
+    position: absolute;
+    width: 500px;
+    border: 1px solid black;
+    padding: 10px;
+    top: -250px;
+    left: calc(50% - 250px);
+    transition: 0.3s;
+    background-color: white;
+}
+
+#modal.visible {    
+    top: calc(50% - 100px);
+    transition: 0.3s;
+}
+
+
+
+
